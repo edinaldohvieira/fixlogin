@@ -1,8 +1,8 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-add_shortcode("fix_form_atualizar_senha", "fix_form_atualizar_senha");
-function fix_form_atualizar_senha($atts, $content = null){
+add_shortcode("user_update_password", "user_update_password");
+function user_update_password($atts, $content = null){
 
 	if(current_user_can('administrator')) {
 		echo "
@@ -31,14 +31,14 @@ function fix_form_atualizar_senha($atts, $content = null){
 			}
 			#fix_1628253480rs input {
 		    	width: 100%;
-		    	border: 1px solid #gray;
+		    	/*border: 1px solid #gray;*/
 		    	border-radius: 3px;
 		    	padding: .5rem 1rem;
 		    	-webkit-transition: all .3s;
 		    	-o-transition: all .3s;
 		    	transition: all .3s;
-		    	color: var(--paletteColor4);
-		    	border: 1px solid var(--paletteColor1);
+		    	/*color: var(--paletteColor4);*/
+		    	/*border: 1px solid var(--paletteColor1);*/
 		    	text-align: center;
 
 			}
@@ -53,24 +53,27 @@ function fix_form_atualizar_senha($atts, $content = null){
 				margin-top: 20px;
 				display: block;
 				padding: 20px;
-				color: var(--paletteColor8);
-				background-color: var(--paletteColor2);
+				/*color: var(--paletteColor8);*/
+				/*background-color: var(--paletteColor2);*/
 				text-align: center;
 
 			}
 
 			.fix_1628253480rs .fix-msg-cab h2 {
-				color: var( --e-global-color-primary );
+				/*color: var( --e-global-color-primary );*/
 				text-align: center;
 				margin-bottom: 10px;
 			}
 			.fix_1628253480rs .fix-msg-cab p {
-				color: var( --e-global-color-primary );
+				/*color: var( --e-global-color-primary );*/
 				text-align: center;	
 				margin-bottom: 10px;
 			}
 			#fix_1628253480rs .error {
 				color: red;
+			}
+			.fix_1628253480_retorno {
+				text-align: center;
 			}
 		</style>
 
@@ -107,6 +110,7 @@ function fix_form_atualizar_senha($atts, $content = null){
 							if (textStatus == "success") {
 								if(resposta.success){
 									$('#fix_1628253480_retorno').html('<span style="color:navy;">'+resposta.msg+'</span>');
+									$('#fix_1628253480_retorno').append('<div><a href="/login/">Re-login</a></div>');
 									$(fix_1628253480rs).remove();
 
 								}
@@ -126,7 +130,7 @@ function fix_form_atualizar_senha($atts, $content = null){
 				<?php wp_nonce_field( 'fix_access', 'fix_1628253480rs' ); ?>
 				<div class="fix_wrapper">
 					<div class="fix_group_field">
-						<div class="dv_label"><label for="fix_user">your new password</label></div>
+						<div class="dv_label"><label for="fix_user">Your new password</label></div>
 						<input 
 							type="password" 
 							name="fix_passwd" 

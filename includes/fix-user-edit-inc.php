@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-add_shortcode("fix__user_edit", "fix_user_edit");
+add_shortcode("fix_user_edit", "fix_user_edit");
 function fix_user_edit($param, $content = null){
 
 	if( !is_user_logged_in() ) return;
@@ -26,8 +26,8 @@ function fix_user_edit($param, $content = null){
 	    	-webkit-transition: all .3s;
 	    	-o-transition: all .3s;
 	    	transition: all .3s;
-	    	color: var(--paletteColor4);
-	    	border: 1px solid var(--paletteColor1);
+	    	/*color: var(--paletteColor4);*/
+	    	/*border: 1px solid var(--paletteColor1);*/
 
 		}
 		#fix1629325638e button {
@@ -35,8 +35,8 @@ function fix_user_edit($param, $content = null){
 			margin-top: 20px;
 			display: block;
 			padding: 20px;
-			color: var(--paletteColor8);
-			background-color: var(--paletteColor2);
+			/*color: var(--paletteColor8);*/
+			/*background-color: var(--paletteColor2);*/
 			text-align: center;
 		}
 
@@ -58,7 +58,7 @@ function fix_user_edit($param, $content = null){
 						}
 						if (textStatus == "success") {
 							if(resposta.success){
-								window.location.href = "<?php echo site_url() ?>/user/my-data/";
+								window.location.href = "<?php echo site_url() ?>/user/";
 							}
 						}
 					});

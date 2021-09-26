@@ -3,8 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 //fix-meu-cadastro-view-inc.php
 
 
-add_shortcode("fix_usuario_view", "fix_usuario_view");
-function fix_usuario_view($param, $content = null){
+add_shortcode("fix_user_view", "fix_user_view");
+function fix_user_view($param, $content = null){
 
 	if( !is_user_logged_in() ) return;
 	$user_id = get_current_user_id();
@@ -39,8 +39,8 @@ function fix_usuario_view($param, $content = null){
 		</div>
 		<div style="height: 30px;"></div>
 		<div style="text-align: center;">
-			<a id="1629325638_btn_edit" href="/user/edit/">Edit user</a> - 
-			<a href="<?php echo site_url() ?>/user/update-password/">Update access password</a>
+			<a id="1629325638_btn_edit" href="/user-edit/">Edit user</a> - 
+			<a href="<?php echo site_url() ?>/user-update-password/">Update access password</a>
 		</div>
 	</div>
 	<?php

@@ -30,6 +30,8 @@ function fix1628253046_enqueue_scripts(){
     wp_enqueue_script( 'jquery-mask', plugin_dir_url( __FILE__ ) . '/js/jquery.mask.js', array( 'jquery' )  );
 }
 
+define( 'FIXLOGIN', __FILE__ );
+
 include("includes/fix-user-disable-admin-bar-inc.php");
 include("includes/fix-user-edit-inc.php");
 include("includes/fix-user-login-inc.php");
@@ -39,3 +41,4 @@ include("includes/fix-user-register-inc.php");
 include("includes/fix-user-update-inc.php");
 include("includes/fix-user-update-password-inc.php");
 include("includes/fix-user-view-inc.php");
+include("includes/fix-user-activation_hook-inc.php");

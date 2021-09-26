@@ -17,7 +17,7 @@ function fix_form_login($atts, $content = null){
 			return ob_get_clean();
 		}
 		ob_start();
-		echo "<div style='text-align:center;'>User is already logged in. Go to <a href='".site_url()."/usuario/'>user panel</a></div>";
+		echo "<div style='text-align:center;'>User is already logged in. Go to <a href='".site_url()."/user/'>user panel</a></div>";
 		return ob_get_clean();
 	}
 	ob_start();
@@ -62,8 +62,8 @@ function fix_form_login($atts, $content = null){
 			margin-top: 20px;
 			display: block;
 			padding: 20px;
-			color: var(--paletteColor8);
-			background-color: var(--paletteColor2);
+			/*color: var(--paletteColor8);*/
+			/*background-color: var(--paletteColor2);*/
 			text-align: center;
 		}
 	</style>
@@ -159,6 +159,7 @@ function fix_form_login($atts, $content = null){
 
 			<div class="fix_group_field">
 				<div><a href="<?php echo site_url() ?>/redefine-password/">Forgot your password?</a></div>
+				<div><a href="<?php echo site_url() ?>/register/">Register</a></div>
 			</div>
 		</div>
 	</form>

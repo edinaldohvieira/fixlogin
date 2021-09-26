@@ -33,8 +33,8 @@ function fix_register($param, $content = null){
 		    	-webkit-transition: all .3s;
 		    	-o-transition: all .3s;
 		    	transition: all .3s;
-		    	color: var(--paletteColor4);
-		    	border: 1px solid var(--paletteColor1);
+		    	/*color: var(--paletteColor4);*/
+		    	/*border: 1px solid var(--paletteColor1);*/
 
 			}
 
@@ -43,8 +43,8 @@ function fix_register($param, $content = null){
 				margin-top: 20px;
 				display: block;
 				padding: 20px;
-				color: var(--paletteColor8);
-				background-color: var(--paletteColor2);
+				/*color: var(--paletteColor8);*/
+				/*background-color: var(--paletteColor2);*/
 				text-align: center;
 
 			}
@@ -113,7 +113,7 @@ function fix_register($param, $content = null){
 							if (textStatus == "success") {
 								if(resposta.success){
 									$('#fix1632251647_cadastre_se .fix-form-row').fadeOut('slow');
-									window.location.href = "<?php echo site_url() ?>/usuario/";
+									window.location.href = "<?php echo site_url() ?>/user/";
 									
 								}
 							}
@@ -147,7 +147,7 @@ function fix_register($param, $content = null){
 				<div class="fix-form-row">
 					<div class="fix-form-col field-type-text">
 						<div class="fix_form_dv_label">
-							<span class="fix_text_field">Your surname:<span class="fix_form_required">*</span></span>
+							<span class="fix_text_field">Your First Name:<span class="fix_form_required">*</span></span>
 						</div>
 						<input 
 							class="fix-form__field text-field " 
@@ -163,7 +163,7 @@ function fix_register($param, $content = null){
 				<div class="fix-form-row">
 					<div class="fix-form-col field-type-text">
 						<div class="fix_form_dv_label">
-							<span class="fix_text_field">Your email:<span class="fix_form_required">*</span></span>
+							<span class="fix_text_field">Your e-mail:<span class="fix_form_required">*</span></span>
 						</div>
 						<input 
 							class="fix-form__field text-field " 

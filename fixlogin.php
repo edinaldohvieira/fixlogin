@@ -30,7 +30,18 @@ function fix1628253046_enqueue_scripts(){
     wp_enqueue_script( 'jquery-mask', plugin_dir_url( __FILE__ ) . '/js/jquery.mask.js', array( 'jquery' )  );
 }
 
+function myplugin_init() {
+    $plugin_rel_path = basename( dirname( __FILE__ ) ) . '/languages'; /* Relative to WP_PLUGIN_DIR */
+    load_plugin_textdomain( 'fixlogin', false, $plugin_rel_path );
+}
+add_action('plugins_loaded', 'myplugin_init');
+
 define( 'FIXLOGIN', __FILE__ );
+define( 'FIXLOGIN_PAGE_LOGIN', "login" );
+define( 'FIXLOGIN_PAGE_REGISTER', "register" );
+define( 'FIXLOGIN_PAGE_REDEFINE_PASSWORD', "redefine-password" );
+define( 'FIXLOGIN_PAGE_USER_VIEW', "user-view" );
+define( 'FIXLOGIN_PAGE_USER_EDIT', "user-edit" );
 
 include("includes/fix-user-disable-admin-bar-inc.php");
 include("includes/fix-user-edit-inc.php");

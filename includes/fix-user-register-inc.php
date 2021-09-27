@@ -131,7 +131,7 @@ function fix_register($param, $content = null){
 				<div class="fix-form-row">
 					<div class="fix-form-col field-type-text">
 						<div class="fix_form_dv_label">
-							<span class="fix_text_field">Your First Name:<span class="fix_form_required">*</span></span>
+							<span class="fix_text_field"><?php echo __("Your First Name","fixlogin") ?>:<span class="fix_form_required">*</span></span>
 						</div>
 						<input 
 							class="fix-form__field text-field " 
@@ -147,7 +147,7 @@ function fix_register($param, $content = null){
 				<div class="fix-form-row">
 					<div class="fix-form-col field-type-text">
 						<div class="fix_form_dv_label">
-							<span class="fix_text_field">Your First Name:<span class="fix_form_required">*</span></span>
+							<span class="fix_text_field"><?php echo __("Your last Name","fixlogin") ?>:<span class="fix_form_required">*</span></span>
 						</div>
 						<input 
 							class="fix-form__field text-field " 
@@ -163,7 +163,7 @@ function fix_register($param, $content = null){
 				<div class="fix-form-row">
 					<div class="fix-form-col field-type-text">
 						<div class="fix_form_dv_label">
-							<span class="fix_text_field">Your e-mail:<span class="fix_form_required">*</span></span>
+							<span class="fix_text_field"><?php echo __("Your e-mail","fixlogin") ?>:<span class="fix_form_required">*</span></span>
 						</div>
 						<input 
 							class="fix-form__field text-field " 
@@ -180,7 +180,7 @@ function fix_register($param, $content = null){
 				<div class="fix-form-row">
 					<div class="fix-form-col field-type-text ">
 						<div class="fix_form_dv_label">
-							<span class="fix_text_field">Your new password:<span class="fix_form_required">*</span></span>
+							<span class="fix_text_field"><?php echo __("Your new password","fixlogin") ?>:<span class="fix_form_required">*</span></span>
 						</div>
 						<input 
 							class="fix-form_field text-field " 
@@ -204,7 +204,7 @@ function fix_register($param, $content = null){
 								class="fix-form_submit" 
 								type="submit"
 								style="width: 100%;"
-							>REGISTER</button>
+							><?php echo __("REGISTER","fixlogin") ?></button>
 						</div>
 					</div>
 				</div>
@@ -271,7 +271,7 @@ function fix1632251647_cadastre_se(){
 
 	$ret = array();
 	$ret['success'] = true;
-	$ret['msg'] = 'Confirm your registration by clicking on the activation link in the email we just sent';
+	$ret['msg'] = __("Confirm your registration by clicking on the activation link in the email we just sent","fixlogin") ;
 	$ret['user_id'] = $user_id;
 	$ret['situacao_codastro'] = '102';
 	echo json_encode($ret);

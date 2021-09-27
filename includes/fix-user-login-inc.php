@@ -9,7 +9,7 @@ function fix_form_login($atts, $content = null){
 			ob_start();
 			echo "
 			<div style='text-align:center;'>
-				<div>User is already logged in as an administrator.</div>
+				<div>.".__("User is already logged in as an administrator.","fixlogin")."</div>
 				<div>go to <a href='".site_url()."/wp-admin/'>administrator area</a>.</div>
 			</div>
 			<div></div>
@@ -18,6 +18,8 @@ function fix_form_login($atts, $content = null){
 		}
 		ob_start();
 		echo "<div style='text-align:center;'>User is already logged in. Go to <a href='".site_url()."/user/'>user panel</a></div>";
+
+		
 		return ob_get_clean();
 	}
 	ob_start();
@@ -53,8 +55,8 @@ function fix_form_login($atts, $content = null){
 	    	-webkit-transition: all .3s;
 	    	-o-transition: all .3s;
 	    	transition: all .3s;
-	    	color: var(--paletteColor4);
-	    	border: 1px solid var(--paletteColor1);
+	    	/*color: var(--paletteColor4);*/
+	    	/*border: 1px solid var(--paletteColor1);*/
 
 		}
 		#fix_1628253480 button {
@@ -85,10 +87,10 @@ function fix_form_login($atts, $content = null){
 					}
 				},
 				messages: {
-					fix_user: "Enter your email address.",
+					fix_user: "<?php echo __("Enter your email address.","fixlogin") ?>",
 					fix_pwd: {
-						required: "Enter your access password.",
-						minlength: "Must be at least 6 characters long."
+						required: "<?php echo __("Enter your access password.","fixlogin") ?>",
+						minlength: "<?php echo __("Must be at least 6 characters long.","fixlogin") ?>"
 					}
 				},
 
@@ -139,7 +141,7 @@ function fix_form_login($atts, $content = null){
 				>
 			</div>
 			<div class="fix_group_field">
-				<label for="fix_pwd">Password</label>
+				<label for="fix_pwd"><?php echo __("Password","fixlogin") ?></label>
 				<input 
 					type="password" 
 					name="fix_pwd" 
@@ -158,8 +160,8 @@ function fix_form_login($atts, $content = null){
 			<div id="result_error"></div>
 
 			<div class="fix_group_field">
-				<div><a href="<?php echo site_url() ?>/redefine-password/">Forgot your password?</a></div>
-				<div><a href="<?php echo site_url() ?>/register/">Register</a></div>
+				<div><a href="<?php echo site_url() ?>/user-redefine-password/"><?php echo __("Forgot your password?","fixlogin") ?></a></div>
+				<div><a href="<?php echo site_url() ?>/user-register/"><?php echo __("Register","fixlogin") ?></a></div>
 			</div>
 		</div>
 	</form>

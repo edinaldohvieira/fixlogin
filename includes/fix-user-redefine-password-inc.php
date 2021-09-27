@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 add_shortcode("fix_form_redefine_password", "fix_form_redefine_password");
 function fix_form_redefine_password($atts, $content = null){
@@ -8,9 +9,9 @@ function fix_form_redefine_password($atts, $content = null){
 	if( is_user_logged_in() ){
 		echo "
 		<div style='text-align:center;'>
-			<h3>YOU ARE LOGGED IN</h3>
-			<p>The reset password option applies when the user wants to login but does not remember the access password.</p>
-			<p>If you really want to change your password, access the option to change password on your control panel.</p>
+			<h3>".__("YOU ARE LOGGED IN","fixlogin")."</h3>
+			<p>".__("The reset password option applies when the user wants to login but does not remember the access password.","fixlogin")."</p>
+			<p>".__("If you really want to change your password, access the option to change password on your control panel.","fixlogin")."</p>
 		</div>
 		";
 		echo ob_get_clean();
@@ -35,7 +36,7 @@ function fix_form_redefine_password($atts, $content = null){
 
 				#fix_1628253480rs input {
 					text-align: center;
-					border: 1px solid var(--paletteColor1);
+					/*border: 1px solid var(--paletteColor1);*/
 				}
 
 				#fix_1628253480rs button {
@@ -52,12 +53,12 @@ function fix_form_redefine_password($atts, $content = null){
 					margin-bottom: 10px;
 				}
 				.fix_1628253480rs .fix-msg-cab h2 {
-					color: var( --e-global-color-primary );
+					/*color: var( --e-global-color-primary );*/
 					text-align: center;
 					margin-bottom: 10px;
 				}
 				.fix_1628253480rs .fix-msg-cab p {
-					color: var( --e-global-color-primary );
+					/*color: var( --e-global-color-primary );*/
 					text-align: center;	
 					margin-bottom: 10px;
 				}
@@ -93,9 +94,9 @@ function fix_form_redefine_password($atts, $content = null){
 						},
 						messages: {
 							fix_email: {
-								required: "Enter the access email",
-								email: "Set the correct email format",
-								remote: "This email was not found in our system." 
+								required: "<?php echo __("Enter the access email","fixlogin") ?>",
+								email: "<?php echo __("Set the correct email format","fixlogin") ?>",
+								remote: "<?php echo __("This email was not found in our system.","fixlogin") ?>" 
 							}
 						},
 						submitHandler: function (form, e) {
@@ -108,7 +109,7 @@ function fix_form_redefine_password($atts, $content = null){
 							});
 							request.always(function(resposta, textStatus) {
 								if (textStatus != "success") {
-									$('#fix_1628253480_retorno').html('<span style="color:red;">Ops. An internal error has occurred.</span>');
+									$('#fix_1628253480_retorno').html('<span style="color:red;">'.__("Ops. An internal error has occurred.","fixlogin").'</span>');
 								}
 								if (textStatus == "success") {
 									if(resposta.success){
@@ -128,7 +129,7 @@ function fix_form_redefine_password($atts, $content = null){
 			<div class="fix_1628253480rs">
 				<form class="" method="post" action="" id="fix_1628253480rs">
 					<div class="fix-msg-cab">
-						<p>Inform your e-mail and we will send you a link to reset your access password.</p>
+						<p><?php echo __("Inform your e-mail and we will send you a link to reset your access password.","fixlogin") ?></p>
 					</div>
 
 					<?php wp_nonce_field( 'fix_access', 'fix_1628253480rs' ); ?>
@@ -139,13 +140,13 @@ function fix_form_redefine_password($atts, $content = null){
 								type="email" 
 								name="fix_email" 
 								id="fix_email" 
-								placeholder="Enter your registration email with us" 
+								placeholder="<?php echo __("Enter your registration email with us","fixlogin") ?>" 
 								autocomplete="off"
 							>
 						</div>
 						<div class="fix_group_field">
 							<button>
-								<span class="">SEND REDEFINE PASSWORD</span>
+								<span class=""><?php echo __("SEND REDEFINE PASSWORD","fixlogin") ?></span>
 							</button>
 						</div>
 						<div id="result_error"></div>
@@ -182,8 +183,8 @@ function fix_form_redefine_password($atts, $content = null){
 						},
 						messages: {
 							fix_passwd: {
-								required: "Enter your new password",
-								minlength: "Enter at least 8 characters",
+								required: "<?php echo __("Enter your new password","fixlogin") ?>",
+								minlength: "<?php echo __("Enter at least 8 characters.","fixlogin") ?>",
 								// email: "Ajuste o formato correto do e-mail",
 								// remote: "Este e-mail não está cadastrado em nosso banco de dados." 
 							}
@@ -198,19 +199,19 @@ function fix_form_redefine_password($atts, $content = null){
 							});
 							request.always(function(resposta, textStatus) {
 								if (textStatus != "success") {
-									$('#fix_1628253480_retorno').html('<span style="color:red;">Ops. An internal error has occurred.</span>');
+									$('#fix_1628253480_retorno').html('<span style="color:red;">'.__("Ops. An internal error has occurred.","fixlogin").'</span>');
 								}
 								if (textStatus == "success") {
 									if(resposta.success){
 										$('#fix_1628253480_retorno').html('<span style="color:navy;">'+resposta.msg+'</span>');
-										$('#fix_1628253480_retorno').append('<div style="color:navy;padding:20px 0px;">Login using your new password</div>');
+										$('#fix_1628253480_retorno').append('<div style="color:navy;padding:20px 0px;">__("Login using your new password","fixlogin")</div>');
 										$('#fix_1628253480_retorno').append('<div style="color:navy;padding:20px 0px;"><a href="<?php echo site_url() ?>">LOGIN</a></div>');
 										$(fix_1628253480rs).remove();
 
 									}
 									if(!resposta.success){
 										$('#fix_1628253480_retorno').html('<span style="color:red;">'+resposta.msg+'</span>');
-										$('#fix_1628253480_retorno').append('<div style="color:navy;">Faça <a href="<?php echo site_url() ?>">LOGIN</a> ou <a href="<?php echo site_url() ?>/redefinir-senha/">RESET YOUR PASSWORD</a></div>');
+										$('#fix_1628253480_retorno').append('<div style="color:navy;">Faça <a href="<?php echo site_url() ?>">LOGIN</a> '.<?php echo __("or","fixlogin") ?>.' <a href="<?php echo site_url() ?>/redefinir-senha/">'.__("RESET YOUR PASSWORD","fixlogin").'</a></div>');
 									}
 								}
 							});
@@ -224,19 +225,19 @@ function fix_form_redefine_password($atts, $content = null){
 					<?php wp_nonce_field( 'fix_access', 'fix_1628253480rs' ); ?>
 					<div class="fix_wrapper">
 						<div class="fix_group_field">
-							<div class="dv_label"><label for="fix_user">Your new password</label></div>
+							<div class="dv_label"><label for="fix_user"><?php echo __("Your new password","fixlogin") ?></label></div>
 							<input 
 								type="password" 
 								name="fix_passwd" 
 								id="fix_passwd" 
-								placeholder="Enter your new password" 
+								placeholder="<?php echo __("Enter your new password","fixlogin") ?>" 
 								autocomplete="off"
 							>
 							<input type="hidden" name="fix_token" value="<?php echo $token ?>">
 						</div>
 						<div class="fix_group_field">
 							<button>
-								<span class="">REDEFINE PASSWORD</span>
+								<span class=""><?php echo __("REDEFINE PASSWORD","fixlogin") ?></span>
 							</button>
 
 						</div>
@@ -264,7 +265,7 @@ function fix1628253796rs(){
    		// wp_nonce_ays( '' );
 		$ret = array();
 		$ret['success'] = false;
-		$ret['msg'] = "Autorização inválida";
+		$ret['msg'] = __("Invalid authorization","fixlogin");
 		echo json_encode($ret);
 		return;
 
@@ -281,7 +282,7 @@ function fix1628253796rs(){
 			// echo "E-mail não encontrado no nossa sitema."; 
 			$ret = array();
 			$ret['success'] = false;
-			$ret['msg'] = "This email was not found in our system.";
+			$ret['msg'] = __("This email was not found in our system.","fixlogin");
 			echo json_encode($ret);
 			return;
 		}
@@ -292,22 +293,20 @@ function fix1628253796rs(){
 		$meta_value = $token;
 		update_user_meta( $user_id, $meta_key, $meta_value);
 		$to = $user->user_email;
-		$subject = 'PASSWORD RESET';
-		$message = '
-		<p>A password reset was requested.</p>
-		<p>For security reasons, if it wasn\'t done by you, just ignore it.</p>
-		<p></p>
-		<p>Access the URL below and enter your new access password.</p>
-		<p><a href="'.site_url().$_POST['_wp_http_referer'].'?token='.$token.'" target="_blank"> '.site_url().$_POST['_wp_http_referer'].'?token='.$token.'</p>
-		<p></p>
-
-		';
+		$subject = __('PASSWORD RESET',"fixlogin");
+		$message = '';
+		$message .= '<p></p>';
+		$message .= '<p>'.__("A password reset was requested.","fixlogin").'</p>';
+		$message .= '<p>'.__("For security reasons, if it wasn\'t done by you, just ignore it.","fixlogin").'</p>';
+		$message .= '<p>'.__("Access the URL below and enter your new access password.","fixlogin").'</p>';
+		$message .= '<p><a href="'.site_url().$_POST['_wp_http_referer'].'?token='.$token.'" target="_blank"> '.site_url().$_POST['_wp_http_referer'].'?token='.$token.'</p>';
+		$message .= '<p></p>';
 		$headers = array('Content-Type: text/html; charset=UTF-8');
 		wp_mail( $to, $subject, $message, $headers );
 
 		$ret = array();
 		$ret['success'] = true;
-		$ret['msg'] = "Please check your email. We send you a link to reset your password.";
+		$ret['msg'] = __("Please check your email. We send you a link to reset your password.","fixlogin");
 		echo json_encode($ret);
 		return;
 	}
@@ -318,7 +317,7 @@ function fix1628253796rs(){
 		if(!$fix_token){
 			$ret = array();
 			$ret['success'] = false;
-			$ret['msg'] = "invalid token";
+			$ret['msg'] = __("invalid token","fixlogin");
 			echo json_encode($ret);
 			return;
 		}
@@ -340,7 +339,7 @@ function fix1628253796rs(){
 
 			$ret = array();
 			$ret['success'] = true;
-			$ret['msg'] = "Password changed successfully";
+			$ret['msg'] = __("Password changed successfully","fixlogin");
 			$ret['sql'] = $sql;
 			$ret['results'] = $results;
 			echo json_encode($ret);
@@ -350,7 +349,7 @@ function fix1628253796rs(){
 
 		$ret = array();
 		$ret['success'] = false;
-		$ret['msg'] = "This unique security TOKEN is non-existent, aspirated or has been run before.";
+		$ret['msg'] = __("This unique security TOKEN is non-existent, aspirated or has been run before.","fixlogin");
 			$ret['sql'] = $sql;
 			$ret['results'] = $results;
 
@@ -370,10 +369,10 @@ function fix_1628253480rs_check_mail_parse_request( &$wp ) {
 }
 function fix_1628253480rs_check_mail(){
 	$fix_email = isset($_POST['fix_email']) ? $_POST['fix_email'] : '';
-	if(!$fix_email) return "Email not informed.";
+	if(!$fix_email) return __("Email not informed.","fixlogin");
 
 	$user_id = email_exists( $fix_email );
-	if($user_id) return "---";//{echo json_encode(false); }
-	if(!$user_id) {echo "Email not found on our system."; }
+	if($user_id) return "";
+	if(!$user_id) {echo __("Email not found on our system.","fixlogin"); }
 
 }

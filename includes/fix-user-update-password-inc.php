@@ -6,14 +6,14 @@ function user_update_password($atts, $content = null){
 
 	if(current_user_can('administrator')) {
 		echo "
-		<div>Administrators cannot change the access password here.</div>
+		<div>".__("Administrators cannot change the access password here.","fixlogin")."</div>
 		";
 		return;
 
 	}
 	if( !is_user_logged_in() ) {
 		echo "
-		<div>The option to change password is only available when the user is logged in.</div>
+		<div>".__("The option to change password is only available when the user is logged in.","fixlogin")."</div>
 		";
 		return;
 
@@ -89,8 +89,8 @@ function user_update_password($atts, $content = null){
 					},
 					messages: {
 						fix_passwd: {
-							required: "Enter your new password",
-							minlength: "Enter at least 8 characters",
+							required: "<?php echo __("Enter your new password","fixlogin") ?>",
+							minlength: "<?php echo __("Enter at least 8 characters","fixlogin") ?>",
 						}
 					},
 					submitHandler: function (form, e) {
@@ -103,7 +103,7 @@ function user_update_password($atts, $content = null){
 						});
 						request.always(function(resposta, textStatus) {
 							if (textStatus != "success") {
-								$('#fix_1628253480_retorno').html('<span style="color:red;">Ops. An internal error has occurred.</span>');
+								$('#fix_1628253480_retorno').html('<span style="color:red;"><?php echo __("Ops. An internal error has occurred.","fixlogin") ?></span>');
 								
 							}
 
@@ -130,18 +130,18 @@ function user_update_password($atts, $content = null){
 				<?php wp_nonce_field( 'fix_access', 'fix_1628253480rs' ); ?>
 				<div class="fix_wrapper">
 					<div class="fix_group_field">
-						<div class="dv_label"><label for="fix_user">Your new password</label></div>
+						<div class="dv_label"><label for="fix_user"><?php echo __("Your new password","fixlogin") ?></label></div>
 						<input 
 							type="password" 
 							name="fix_passwd" 
 							id="fix_passwd" 
-							placeholder="Enter your new password" 
+							placeholder="<?php echo __("Enter your new password","fixlogin") ?>" 
 							autocomplete="off"
 						>
 					</div>
 					<div class="fix_group_field">
 						<button>
-							<span class="">CHANGE PASSWORD</span>
+							<span class=""><?php echo __("CHANGE PASSWORD","fixlogin") ?></span>
 						</button>
 
 					</div>
@@ -173,7 +173,7 @@ function fix1628253796rs2u(){
    		// wp_nonce_ays( '' );
 		$ret = array();
 		$ret['success'] = false;
-		$ret['msg'] = "Invalid authorization";
+		$ret['msg'] = __("Invalid authorization","fixlogin");
 		echo json_encode($ret);
 		return;
 
@@ -189,7 +189,7 @@ function fix1628253796rs2u(){
 
 	$ret = array();
 	$ret['success'] = true;
-	$ret['msg'] = "Password changed successfully";
+	$ret['msg'] = __("Password changed successfully","fixlogin");
 	$ret['sql'] = $sql;
 	$ret['results'] = $results;
 	echo json_encode($ret);
